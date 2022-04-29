@@ -1,0 +1,8 @@
+{
+    "C_Cpp.errorSquiggles": "Enabled",
+    "git.ignoreLimitWarning": true,
+    "files.associations": {
+        "vector": "cpp"
+    }
+}
+
