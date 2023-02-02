@@ -1,21 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
-// ABC081A-Placing Marbles
+typedef long long ll;
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
+const double PI = 3.14159265358979;
 
 int main() {
 
-int A, B, C, X=0, ans=0;
-cin >> A; 
-cin >> B;
-cin >> C;
-cin >> X;
+int a, b, c, x, ans = 0;
+cin >> a >> b >> c >> x;
 
-for (int i=0; i<A+1; i++) {
-    for (int k=0; k<B+1; k++) {
-        for (int j=0; j<C+1; j++)
-            if (500*i+100*k+50*j==X) ans++;
+rep(i,a+1) {
+    rep(j,b+1) {
+        rep(k,c+1) {
+            if (i*500+j*100+k*50==x) ans++;
+        }
     }
 }
 
-cout << ans << endl;
+cout << ans << "\n";
+
+return 0;
 }

@@ -3,29 +3,25 @@ using namespace std;
 typedef long long ll;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 const double PI = 3.14159265358979;
-int H, W, sy, sx, gy, gx, start, goal;
-char c[51][51];
-
-// グラフ・最短経路
-int dist[2501];
-vector<int> G[2501];
-vector<vector<int>> data = {
-  {7, 4, 0, 8},
-  {2, 0, 3, 5},
-  {6, 1, 7, 0},
-};
-
 
 int main() {
     
+    int H, W, sy, sx, gy, gx, start, goal;
+
+    // グラフ・最短経路
+    int dist[2501];
+    vector<int> G[2501];
     cin >> H >> W;
     cin >> sx >> sy; start = sx*W+sy; // スタートの座標(sx, sy) と頂点番号 sx*W+sy
     cin >> gx >> gy; goal = gx*W+gy; // ゴールの座標(gx, gy) と頂点番号 gx*W+gy
+    vector<string> c(H+1);
 
     // 入力
-    for (int i=1; i<H+1; i++) {
-        for (int j=1; j<W+1; j++) cin >> c[i][j];
-    }
+    //for (int i=1; i<H+1; i++) {
+    //    for (int j=1; j<W+1; j++) cin >> c[i][j];
+    //}
+    for (int i=1; i<H+1; i++) cin >> c[i];
+    
     
     // 横方向の辺 [(i, j) - (i, j+1)] をグラフに追加
     for (int i=1; i<H+1; i++) {
@@ -36,14 +32,8 @@ int main() {
                 G[idx1].push_back(idx2);
                 G[idx2].push_back(idx1);
             }
-        }
-    }
-    
-    // 縦方向の辺 [[i, j] - (i, j+1)]をグラフに追加
-    for (int i=1; i<H+1; i++) {
-        for (int j=1; j<W+1; j++) {
-            int idx1 = i * W + j;
-            int idx2 = (i+1) * W + j;
+            idx1 = i * W + j;
+            idx2 = (i+1) * W + j;
             if (c[i][j]=='.' & c[i+1][j]=='.') {
                 G[idx1].push_back(idx2);
                 G[idx2].push_back(idx1);

@@ -30,7 +30,7 @@ int main() {
         column[4] = (s[3] == '1') or (s[9] == '1');
         column[5] = (s[6] == '1');
         column[6] = (s[10] == '1');
-        for (int i=0; i<7; i++) {
+        for (int i=1; i<7; i++) {
             for (int j=0; j<i; j++) {
                 if (column[i] and column[j]) {
                     for (int k=j+1; k<i; k++) {

@@ -3,67 +3,63 @@ using namespace std;
 typedef long long ll;
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 const double PI = 3.14159265358979;
-int H, W, sy, sx, gy, gx, start, goal;
-// グラフ・最短経路
-
-vector<int> G[2501];
-
-char c[51][51];
-int dist[2501];
 
 int main() {
 
-    cin >> H >> W >> sx >> sy >> gx >> gy;
-    start = sx * W + sy;
-    goal = gx * W + gy;
+    int H, W, sy, sx, gy, gx, start, goal;
+    cin >> H >> W;
+    cin >> sx >> sy; 
+    cin >> gx >> gy;
+    sy--, sx--, gy--, gx--;
+    start = W*sx+sy; goal = W*gx+gy;
+    
+    vector<string> maze(H);
+    vector<int> graph[W*H];
+    vector<int> dist(W*H,-1);
 
-    for (int i=1; i<H+1; i++) {
-        for (int j=1; j<W+1; j++) cin >> c[i][j];
-    }
+    rep(i,H) cin >> maze[i];
 
-    // 横方向の移動
-    for (int i=1; i<H+1; i++) {
-        for (int j=1; j<W; j++) {
-            int idx1 = i * W + j;
-            int idx2 = i * W + (j + 1);
-            if (c[i][j]=='.' && c[i][j+1]=='.') {
-                G[idx1].push_back(idx2);
-                G[idx2].push_back(idx1);
+    //　横方向，縦方向それぞれでグラフとして追加
+    rep(i,H) {
+        rep(j,W) {
+            // 横方向
+            int dx1 = i*W+j, dx2 = i*W+(j+1);
+            if (maze[i][j]=='.' && maze[i][j+1]=='.') {
+                graph[dx1].push_back(dx2);
+                graph[dx2].push_back(dx1);
             }
         }
     }
-
-    // 縦方向の移動
-    for (int i=1; i<H; i++) {
-        for (int j=1; j<W+1; j++) {
-            int idx1 = i * W + j;
-            int idx2 = (i + 1) * W + j;
-            if (c[i][j]=='.' && c[i+1][j]=='.') {
-                G[idx1].push_back(idx2);
-                G[idx2].push_back(idx1);
+    rep(i,H) {
+        rep(j,W) {
+            // 縦方向
+            int dy1 = i*W+j, dy2 = (i+1)*W+j;
+            if (maze[i][j]=='.' && maze[i+1][j]=='.') {
+                graph[dy1].push_back(dy2);
+                graph[dy2].push_back(dy1);
             }
         }
     }
     
-    // 幅優先探索の初期化
-    for (int i=1; i<H*W+1; i++) dist[i] = -1;
-    queue<int> Q;
-    Q.push(start); dist[start] = 0;
-
-    // 幅優先探索
-    while(!Q.empty()) {
-        int pos = Q.front();
-        Q.pop();
-        for (int i=0; i<(int)G[pos].size(); i++) {
-            int nex = G[pos][i];
-            if (dist[nex]==-1) {
-                dist[nex] = dist[pos] + 1;
-                Q.push(nex);
+    queue<int> q;
+    q.push(start);
+    dist[start] = 0;
+    
+    //　幅優先探索
+    while(!q.empty()) {
+        int pos = q.front();
+        q.pop();
+        for (auto i:graph[pos]) {
+            int next = graph[pos][i];
+            if (dist[next]==-1) {
+                dist[next] = dist[pos]+1;
+                q.push(next);
             }
         }
     }
 
-    cout << dist[goal] << endl;
+    cout << dist[goal] << "\n";
+    
     
 
     return 0;

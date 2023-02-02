@@ -1,16 +1,20 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
+const double PI = 3.14159265358979;
 // ABC081A-Placing Marbles
 
 int main() {
 
 string s;
 cin >> s;
+int ans = 0;
 
-if ((s=="100") || (s=="010") || (s=="001")) cout << 1 << endl;
-else if ((s=="110") || (s=="101") || (s=="011")) cout << 2 << endl;
-else if (s=="000") cout << 0 << endl;
-else cout << 3 << endl;
+rep(i,s.size()) {
+    if (s[i]=='1') ans++;
+}
 
+cout << ans << "\n";
 
 }
