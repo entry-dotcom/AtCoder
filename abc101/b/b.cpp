@@ -6,16 +6,16 @@ const double PI = 3.14159265358979;
 
 int main() {
 
-    string s;
-    cin >> s;
-    int ans = 0;
+    int n, ans=0;
+    cin >> n;
+    int n_t = n;
 
-    rep(i,4) {
-        if (s[i]=='+') ans++;
-        else ans--;
+    while(n_t>0) {
+        ans += n_t%10;
+        n_t /= 10;
     }
+    //cout << ans << "\n";
+    cout << (n%ans==0 ? "Yes":"No") << "\n";
 
-    cout << ans << "\n";
-    
     return 0;
 }
