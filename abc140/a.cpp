@@ -7,7 +7,9 @@ const double PI = 3.14159265358979;
 
 int main() {
 
-    
+    int n;
+    cin >> n;
+    cout << pow(n,3) << "\n";
 
     return 0;
 }

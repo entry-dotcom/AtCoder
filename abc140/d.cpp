@@ -7,7 +7,5 @@ const double PI = 3.14159265358979;
 
 int main() {
 
-    
-
     return 0;
 }
