@@ -9,7 +9,6 @@ int main() {
 
     int n;
     cin >> n;
-    //vector<string> w(n);
     set<string> word;
     word.insert("and");
     word.insert("not");
@@ -28,7 +27,6 @@ int main() {
     }
 
     cout << (ans ? "Yes":"No") << "\n";
-
 
     return 0;
 }
