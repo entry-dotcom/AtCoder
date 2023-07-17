@@ -2,7 +2,10 @@
 #include <atcoder/all>
 using namespace std;
 typedef long long ll;
+typedef unsigned long long ull;
 #define rep(i, start, n) for (int i = start; i < (int)(n); i++)
+template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
+template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
 // 1次元，２次元ベクトルの簡略化
 #define vi1 vector<int>
 #define vll1 vector<ll>
@@ -21,7 +24,25 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int n, left = 0, right = 0;
+    string s;
+    cin >> n >> s;
+    queue<char> ans;
+
+    rep(i,0,n) {
+        if (s.at(i)=='(') left++;
+        if (s.at(i)==')') right++;
+        if (right>left || right==left) {
+            if (s.at(i)!='(' || s.at(i)!=')') ans.push(s.at(i));
+        }
+    }
+
+    while(!ans.empty()) {
+        cout << ans.front();
+        ans.pop();
+    }
+
+    cout << "\n";
 
     return 0;
 }
