@@ -22,20 +22,20 @@ vi2 rotate(vi2 a) {vi2 na; int sz = a.size(); rep(i,0,sz) {rep(j,0,sz) na.at(i).
 //　グリッド探索変数
 vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
-int get_max(vector<vector<int>> graph, int s) {
+int bfs(int s, vector<vector<int>> graph) {
     int n = graph.size();
     vector<int> dist(n,-1);
     dist.at(s) = 0;
     queue<int> que;
     que.push(s);
-
+    
     while(!que.empty()) {
-        int x = que.front();
+        int v = que.front();
         que.pop();
-        rep(i,0,graph[x].size()) {
-            int y = graph[x][i];
+        rep(i,0,graph.at(v).size()) {
+            int y = graph[v][i];
             if (dist.at(y) == -1) {
-                dist.at(y) = dist.at(x)+1;
+                dist.at(y)  = dist.at(v)+1;
                 que.push(y);
             }
         }
@@ -48,7 +48,6 @@ int main() {
 
     int n1, n2, m;
     cin >> n1 >> n2 >> m;
-
     vector<vector<int>> graph(n1+n2);
 
     rep(i,0,m) {
@@ -59,7 +58,9 @@ int main() {
         graph[b].push_back(a);
     }
 
-    cout << get_max(graph,0) + get_max(graph,n1+n2-1) + 1 << "\n";
+    cout << bfs(0,graph) + bfs(n1+n2-1, graph) + 1 << "\n";
+
+
 
     return 0;
 }

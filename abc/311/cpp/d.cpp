@@ -20,46 +20,34 @@ int sum_digit(int n) {int ans = 0; while(n>0) { ans += n%10; n /= 10;} return an
 //　行列の 90 度回転
 vi2 rotate(vi2 a) {vi2 na; int sz = a.size(); rep(i,0,sz) {rep(j,0,sz) na.at(i).at(j) = a.at(sz-1-j).at(i);} return na;}
 //　グリッド探索変数
-vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
-
-int get_max(vector<vector<int>> graph, int s) {
-    int n = graph.size();
-    vector<int> dist(n,-1);
-    dist.at(s) = 0;
-    queue<int> que;
-    que.push(s);
-
-    while(!que.empty()) {
-        int x = que.front();
-        que.pop();
-        rep(i,0,graph[x].size()) {
-            int y = graph[x][i];
-            if (dist.at(y) == -1) {
-                dist.at(y) = dist.at(x)+1;
-                que.push(y);
-            }
-        }
-    }
-
-    return *max_element(dist.begin(),dist.end());
-}
+//vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
+vector<int> dj = {0,-1,1,0}, di = {-1,0,0,1};
 
 int main() {
 
-    int n1, n2, m;
-    cin >> n1 >> n2 >> m;
+    int n, m, start_i, start_j, ans = 0, ans1=0;
+    start_i = start_j = 1;
+    cin >> n >> m;
+    vector<string> s(n);
+    vector<vector<bool>> visit(n,vector<bool>(m,false));
+    visit.at(1).at(1) = true;
 
-    vector<vector<int>> graph(n1+n2);
-
-    rep(i,0,m) {
-        int a, b;
-        cin >> a >> b;
-        a--, b--;
-        graph[a].push_back(b);
-        graph[b].push_back(a);
+    rep(i,0,n) cin >> s.at(i);
+    
+    rep(i,0,n) {
+        rep(j,0,m) {
+            rep(dij,0,4) {
+                rep(st,1,max(n,m)) {
+                    int si = start_i+i+(di.at(dij)*st), sj = start_j+j+(dj.at(dij)*st);
+                    if (0>si || si>n-1 || 0>sj || sj>m-1) break;
+                    if (s.at(si).at(sj)=='.') visit.at(si).at(sj) = true;
+                }
+            }
+        }
     }
-
-    cout << get_max(graph,0) + get_max(graph,n1+n2-1) + 1 << "\n";
+    
+    rep(i,0,n) rep(j,0,m) if (visit.at(i).at(j)) ans++;
+    cout << ans << "\n";
 
     return 0;
 }

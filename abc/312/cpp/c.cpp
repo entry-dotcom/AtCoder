@@ -22,44 +22,25 @@ vi2 rotate(vi2 a) {vi2 na; int sz = a.size(); rep(i,0,sz) {rep(j,0,sz) na.at(i).
 //　グリッド探索変数
 vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
-int get_max(vector<vector<int>> graph, int s) {
-    int n = graph.size();
-    vector<int> dist(n,-1);
-    dist.at(s) = 0;
-    queue<int> que;
-    que.push(s);
-
-    while(!que.empty()) {
-        int x = que.front();
-        que.pop();
-        rep(i,0,graph[x].size()) {
-            int y = graph[x][i];
-            if (dist.at(y) == -1) {
-                dist.at(y) = dist.at(x)+1;
-                que.push(y);
-            }
-        }
-    }
-
-    return *max_element(dist.begin(),dist.end());
-}
-
 int main() {
 
-    int n1, n2, m;
-    cin >> n1 >> n2 >> m;
-
-    vector<vector<int>> graph(n1+n2);
-
-    rep(i,0,m) {
-        int a, b;
-        cin >> a >> b;
-        a--, b--;
-        graph[a].push_back(b);
-        graph[b].push_back(a);
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n), b(m);
+    rep(i,0,n) cin >> a.at(i);
+    rep(i,0,m) cin >> b.at(i);
+    
+    int wa = 0, ac = 1e9+1;
+    
+    while(wa+1<ac) {
+        int wj = (wa+ac)/2;
+        int na = 0, nb = 0;
+        rep(i,0,n) if (a.at(i) <= wj) na++;
+        rep(i,0,m) if (b.at(i) >= wj) nb++;
+        if (na >= nb) ac = wj;
+        else wa = wj;
+        cout << na << " " << nb << " " << ac << "\n";
     }
 
-    cout << get_max(graph,0) + get_max(graph,n1+n2-1) + 1 << "\n";
-
-    return 0;
+    cout << ac << "\n";
 }

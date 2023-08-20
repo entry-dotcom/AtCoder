@@ -22,44 +22,26 @@ vi2 rotate(vi2 a) {vi2 na; int sz = a.size(); rep(i,0,sz) {rep(j,0,sz) na.at(i).
 //　グリッド探索変数
 vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
-int get_max(vector<vector<int>> graph, int s) {
-    int n = graph.size();
-    vector<int> dist(n,-1);
-    dist.at(s) = 0;
-    queue<int> que;
-    que.push(s);
-
-    while(!que.empty()) {
-        int x = que.front();
-        que.pop();
-        rep(i,0,graph[x].size()) {
-            int y = graph[x][i];
-            if (dist.at(y) == -1) {
-                dist.at(y) = dist.at(x)+1;
-                que.push(y);
-            }
-        }
-    }
-
-    return *max_element(dist.begin(),dist.end());
-}
-
 int main() {
 
-    int n1, n2, m;
-    cin >> n1 >> n2 >> m;
+    ll k, base_a = 0, base_b = 0;
+    string a, b;
+    cin >> k >> a >> b;
+    reverse(a.begin(),a.end());
+    reverse(b.begin(),b.end());
+    //cout << a << " \n";
 
-    vector<vector<int>> graph(n1+n2);
-
-    rep(i,0,m) {
-        int a, b;
-        cin >> a >> b;
-        a--, b--;
-        graph[a].push_back(b);
-        graph[b].push_back(a);
+    rep(i,0,a.size()) {
+        base_a += (a.at(i)-'0') * pow(k,i);
+        //cout << base_a << " ";
+    }
+    rep(i,0,b.size()) {
+        base_b += (b.at(i)-'0') * pow(k,i);
+        //cout << base_a << " ";
     }
 
-    cout << get_max(graph,0) + get_max(graph,n1+n2-1) + 1 << "\n";
+    cout << base_a*base_b << "\n";
+
 
     return 0;
 }

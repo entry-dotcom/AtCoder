@@ -1,0 +1,1 @@
+if (s.at(i+ni+5).at(j+nj+5)!='.') check = false;
