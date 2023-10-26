@@ -24,7 +24,21 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int n, k, ans = 0;
+    cin >> n >> k;
+    vector<int> a(n);
+    rep(i,0,n) cin >> a.at(i);
+
+    rep(i,0,n) {
+        bool check = true;
+        rep(j,0,k) {
+            if (a.at(j)-1<0) check = false;
+            else a.at(j)--;
+        }
+        if (check) ans++;
+    }
+
+    cout << ans << "\n";
 
     return 0;
 }

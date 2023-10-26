@@ -24,6 +24,16 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
+    int n, q;
+    cin >> n >> q;
+    vector<int> a(n);
+    rep(i,0,n) cin >> a.at(i);
+    sort(a.begin(),a.end());
+    vector<int> x(q);
+    rep(i,0,q) cin >> x.at(i);
+    rep(i,0,q) {
+        cout << (a.end()-lower_bound(a.begin(),a.end(),x.at(i))) << "\n";
+    }
     
 
     return 0;

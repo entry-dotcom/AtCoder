@@ -24,7 +24,19 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
+    string s;
+    cin >> s;
+    vector<string> ans;
+    int n = s.size();
+
+    rep(i,0,n) {
+        string kari = s.substr(i,n) + s.substr(0,i);
+        ans.push_back(kari);
+    }
     
+    sort(ans.begin(),ans.end());
+    cout << ans.at(0) << "\n";
+    cout << ans.at(n-1) << "\n";
 
     return 0;
 }

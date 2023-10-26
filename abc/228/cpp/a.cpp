@@ -24,7 +24,16 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int s, t, x;
+    cin >> s >> t >> x;
+
+    if (s>t) {
+        if (x>=s || x<t) {cout << "Yes" << "\n"; return 0;}
+    } else {
+        if (x>=s && x<t) {cout << "Yes" << "\n"; return 0;}
+    }
+
+    cout << "No" << "\n";
 
     return 0;
 }

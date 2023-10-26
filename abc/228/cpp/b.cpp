@@ -24,7 +24,36 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
+    int n, x, ans = 0;
+    cin >> n >> x;
+    vector<vector<int>> a(n);
+    vector<bool> visit(n,false);
+    rep(i,0,n) {
+        int a_i; cin >> a_i; a_i--;
+        a.at(i).push_back(a_i);
+    }
+
+    stack<int> st;
+    st.push(x-1);
+
+    while(!st.empty()) {
+        int v = st.top();
+        st.pop();
+        visit.at(v) = true;
+        rep(i,0,a.at(v).size()) {
+            if (!visit.at(a.at(v).at(i))) {
+                visit.at(a.at(v).at(i)) = true;
+                st.push(a.at(v).at(i));
+            }
+        }
+    }
+
     
+    rep(i,0,n) {
+        if (visit.at(i)) ans++;
+    }
+
+    cout << ans << "\n";
 
     return 0;
 }

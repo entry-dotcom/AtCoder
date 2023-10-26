@@ -24,7 +24,36 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int n;
+    ll ans = 0;
+    cin >> n;
+    vector<vector<int>> graph(n);
+    vector<bool> visit(n,false);
+    vector<int> t_i(n);
+
+    rep(i,0,n) {
+        int t, k;
+        cin >> t >> k;
+        t_i.at(i) = t;
+        rep(j,0,k) {
+            int a_i;
+            cin >> a_i;
+            graph.at(i).push_back(a_i);
+        }
+    }
+
+    visit.at(n-1) = true;
+
+    for (int i=n-1; i>=0; i--) {
+        if (visit.at(i)) {
+            ans += t_i.at(i);
+            rep(j,0,graph.at(i).size()) {
+                visit.at(graph.at(i).at(j)-1) = true;
+            }
+        }
+    }
+
+    cout << ans << "\n";
 
     return 0;
 }

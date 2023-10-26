@@ -24,7 +24,18 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    ll n, a, b, p, q, r, s;
+    cin >> n >> a >> b >> p >> q >> r >> s;
+
+    for (ll i=p; i<q+1; i++) {
+        for (ll j=r; j<s+1; j++) {
+            if (i-j==a-b) cout << '#';
+            else if (i+j==a+b) cout << '#';
+            else cout << '.';
+        }
+        cout << endl;
+    }
+
 
     return 0;
 }

@@ -10,7 +10,27 @@
         "unordered_set": "cpp",
         "random": "cpp",
         "ostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "iosfwd": "cpp",
+        "queue": "cpp",
+        "__split_buffer": "cpp",
+        "atomic": "cpp",
+        "forward_list": "cpp",
+        "ios": "cpp",
+        "list": "cpp",
+        "system_error": "cpp",
+        "filesystem": "cpp",
+        "stack": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "__tree": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "variant": "cpp"
     },
 
         "code-runner.runInTerminal": true,
@@ -75,7 +95,8 @@
             "pom.xml": "cd $dir && mvn clean package"
         },
         "git.suggestSmartCommit": false,
-        "C_Cpp.dimInactiveRegions": true
+        "C_Cpp.dimInactiveRegions": true,
+        "C_Cpp.errorSquiggles": "enabled"
     
     
 }

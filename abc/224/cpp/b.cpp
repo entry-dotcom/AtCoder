@@ -24,7 +24,23 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int h, w;
+    cin >> h >> w;
+    vector<vector<int>> a(h,vector<int> (w,0));
+
+    rep(i,0,h) rep(j,0,w) cin >> a.at(i).at(j);
+
+    rep(i1,0,h) {
+        rep(i2,i1+1,h) {
+            rep(j1,0,w) {
+                rep(j2,j1+1,w) {
+                    if (a.at(i1).at(j1)+a.at(i2).at(j2) > a.at(i2).at(j1)+a.at(i1).at(j2)) {cout << "No" << "\n"; return 0;}
+                }
+            }
+        }
+    }
+
+    cout << "Yes" << "\n";
 
     return 0;
 }

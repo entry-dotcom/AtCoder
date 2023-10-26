@@ -24,7 +24,15 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
+    int n;
+    cin >> n;
     
+    if (n<42) {
+        if (n<10) {cout << "AGC00" << n << "\n"; return 0;}
+        else {cout << "AGC0" << n << "\n"; return 0;}
+    } else {
+        {cout << "AGC0" << n+1 << "\n"; return 0;}
+    }
 
     return 0;
 }

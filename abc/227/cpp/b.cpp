@@ -24,7 +24,22 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int n, ans = 0;
+    cin >> n;
+    vector<int> s(n);
+    rep(i,0,n) cin >> s.at(i);
+
+    rep(i,0,n) {
+        bool check = false;
+        rep(a,1,s.at(i)) {
+            rep(b,1,s.at(i)) {
+                if (4*a*b+3*a+3*b==s.at(i)) check = true;
+            }
+        }
+        if (!check) ans++;
+    }
+
+    cout << ans << "\n";
 
     return 0;
 }

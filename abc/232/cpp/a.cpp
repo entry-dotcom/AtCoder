@@ -24,7 +24,9 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    string s;
+    cin >> s;
+    cout << (s.at(0)-'0') * (s.at(2)-'0') << "\n";
 
     return 0;
 }

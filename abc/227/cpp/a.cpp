@@ -24,7 +24,11 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
+    int n, k, a, ans = 0;
+    cin >> n >> k >> a;
     
+    if (n>=k+a) cout << k+a << "\n";
+    else cout << (k+a-1)/n << "\n";
 
     return 0;
 }

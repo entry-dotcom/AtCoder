@@ -24,7 +24,25 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    string s;
+    int k;
+    cin >> s >> k;
+    int  n = s.size();
+    vector<int> cnt(n+1,0);
+
+    rep(i,0,n) {
+        if (s.at(i)=='.') cnt.at(i+1) = cnt.at(i)+1;
+        else cnt.at(i+1) = cnt.at(i);
+    }
+    rep(i,0,n+1) cout << cnt.at(i);
+
+    ll ans = 0, r = 0;
+    for (ll l=0; l<=n-1; l++) {
+        while(r<=n-1 && cnt.at(r+1)-cnt.at(l)<=k)  r++;
+        ans = max(ans,r-l);
+    }
+
+    //cout << ans << "\n";
 
     return 0;
 }

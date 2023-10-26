@@ -24,7 +24,23 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    ll n, m;
+    cin >> n >> m;
+    vector<vector<ll>> b(n,vector<ll>(m,0));
+
+    rep(i,0,n) rep(j,0,m) cin >> b.at(i).at(j);
+
+    //rep(i,0,n) rep(j,0,m) b.at(i).at(j);
+    ll start = b.at(0).at(0);
+
+    rep(i,0,n) {
+        rep(j,0,m) {
+            if (j<m-1 && b.at(i).at(j)%7==0) {cout << "No" << "\n"; return 0;}
+            if (b.at(i).at(j) != start+i*7+j) {cout << "No" << "\n"; return 0;}
+        }
+    }
+
+    cout << "Yes" << "\n";
 
     return 0;
 }

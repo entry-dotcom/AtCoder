@@ -24,7 +24,22 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
+    ll n, w;
+    cin >> n >> w;
+    vector<pair<ll,ll>> a_b(n);
+    rep(i,0,n) cin >> a_b.at(i).first >> a_b.at(i).second;
     
+    sort(a_b.begin(),a_b.end());
+    reverse(a_b.begin(),a_b.end());
+
+    ll ans = 0;
+
+    for (auto &nx : a_b) {
+        ans += nx.first * min(w,nx.second);
+        w -= min(w,nx.second);
+    }
+
+    cout << ans << "\n";
 
     return 0;
 }

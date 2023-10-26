@@ -24,7 +24,12 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    string s;
+    cin >> s;
+
+    if (s.at(0)==s.at(1) && s.at(1)==s.at(2) && s.at(0)==s.at(2)) {cout << 1 << "\n"; return 0;}
+    else if (s.at(0)==s.at(1) || s.at(1)==s.at(2) || s.at(0)==s.at(2)) {cout << 3 << "\n"; return 0;}
+    else cout << 6 << "\n";
 
     return 0;
 }

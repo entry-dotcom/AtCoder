@@ -24,7 +24,22 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int n;
+    cin >> n;
+    vector<vector<int>> a[n];
+    set<vector<int>> st;
+
+    rep(i,0,n) {
+        int l;
+        cin >> l;
+        vector<int> a_i(l);
+        rep(j,0,l) cin >> a_i.at(j);
+        st.insert(a_i);
+    }
+
+    cout << st.size() << "\n";
+
+
 
     return 0;
 }

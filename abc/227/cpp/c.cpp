@@ -24,7 +24,16 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    ll n, ans = 0;
+    cin >> n;
+
+    for (ll a=1; a*a*a<=n; a++) {
+        for (ll b=a; a*b*b<=n; b++) {
+            ans += floor(n/(a*b)) - b + 1;
+        }
+    }
+
+    cout << ans << "\n";
 
     return 0;
 }

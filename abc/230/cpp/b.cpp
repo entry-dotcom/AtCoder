@@ -24,7 +24,21 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    string s, t = "xxoxxoxxoxxoxxoxxoxxoxxoxxoxxoxxoxxo";
+    cin >> s;
+    int n = s.size();
+    bool check = true;
+    set<int> st_x, st_o;
+
+    rep(i,0,t.size()-n) {
+        check = true;
+        rep(j,0,n) {
+            if (t.at(i+j)!=s.at(j)) check = false;
+        }
+        if (check) {cout << "Yes" << "\n"; return 0;}
+    }
+
+    cout << "No" << "\n";
 
     return 0;
 }

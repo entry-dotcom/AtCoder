@@ -24,7 +24,10 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int x;
+    cin >> x;
+
+    cout << (x>=100 && x%100==0? "Yes":"No") << "\n";
 
     return 0;
 }

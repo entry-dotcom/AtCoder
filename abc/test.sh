@@ -1,6 +1,7 @@
 # AtCoder問題番号 ディレクトリをまとめて作成
 <<comment_out
-for ((i=206; i<208; i++))
+
+for ((i=323; i<351; i++))
 do
     mkdir -p $i/cpp
     mkdir -p $i/py
@@ -8,10 +9,11 @@ do
 done
 
 
-for ((i=206; i<208; i++))
+for ((i=323; i<351; i++))
 do
-    cp template.cpp $i/cpp/a.cpp
-    #mv $i/cpp/template.cpp a.cpp
+    mv $i/cpp/template.cpp a.cpp
+    #cp template.cpp $i/cpp/a.cpp
+    
     #rmdir $i/$py
     cp $i/cpp/a.cpp $i/cpp/b.cpp
     cp $i/cpp/a.cpp $i/cpp/c.cpp

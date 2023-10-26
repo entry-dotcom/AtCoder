@@ -24,7 +24,26 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int n;
+    cin >> n;
+    vector<double> a(n), b(n);
+    double time = 0, ans = 0;
+
+    rep(i,0,n) cin >> a.at(i) >> b.at(i);
+    rep(i,0,n) time += a.at(i)/b.at(i);
+    time /= 2;
+
+    rep(i,0,n) {
+        time -= a.at(i)/b.at(i);
+        ans += a.at(i);
+        if (time<=0) {
+            time += a.at(i)/b.at(i);
+            ans -= a.at(i);
+            ans += b.at(i) * time;
+            cout << fixed << setprecision(15) << ans  << "\n";
+            return 0;
+        }
+    }
 
     return 0;
 }

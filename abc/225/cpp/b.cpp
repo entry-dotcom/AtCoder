@@ -24,7 +24,27 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
+    int n;
+    cin >> n;
+    vector<int> node(n,0);
+
+    rep(i,0,n-1) {
+        int a, b;
+        cin >> a >> b;
+        node.at(a-1)++;
+        node.at(b-1)++;
+    }
     
+    int star = *max_element(node.begin(),node.end());
+
+    //if (star<n) {cout << "No" << "\n"; return 0;}
+    rep(i,0,n) {
+        if (node.at(i)!=star) {
+            if (node.at(i)!=1) {cout << "No" << "\n"; return 0;}
+        }
+    }
+
+    cout << (star!=n-1 ? "No":"Yes") << "\n";
 
     return 0;
 }

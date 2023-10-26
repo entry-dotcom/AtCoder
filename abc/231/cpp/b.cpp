@@ -24,7 +24,27 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    int n;
+    cin >> n;
+    map<string, int> st;
+
+    rep(i,0,n) {
+        string s_i;
+        cin >> s_i;
+        st[s_i]++;
+    }
+
+    int ans = 0;
+    string mozi;
+
+    for (auto v:st) {
+        ans = max(ans,v.second);
+        
+    }
+
+    for(auto v:st) {
+        if (st[v.first]==ans) {cout << v.first << "\n"; return 0;}
+    }
 
     return 0;
 }

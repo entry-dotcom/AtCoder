@@ -20,11 +20,25 @@ int sum_digit(int n) {int ans = 0; while(n>0) { ans += n%10; n /= 10;} return an
 //　行列の 90 度回転
 vi2 rotate(vi2 a) {vi2 na; int sz = a.size(); rep(i,0,sz) {rep(j,0,sz) na.at(i).at(j) = a.at(sz-1-j).at(i);} return na;}
 //　グリッド探索変数
-vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
+//vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
+vector<int> dj = {0,-1,1,0}, di = {-1,0,0,1};
 
 int main() {
 
-    
+    int h, w;
+    cin >> h >> w;
+    vector<string> s(h);
+    rep(i,0,h) cin >> s.at(i);
+    vector<char> next(256);
+    next['s'] = 'n';
+    next['n'] = 'u';
+    next['u'] = 'k';
+    next['k'] = 'e';
+    next['e'] = 's';
+    rep(i,0,next.size()) cout << next.at(i);
+    // auto dfs[&] (int i, int j) -> void {
+
+    // }
 
     return 0;
 }

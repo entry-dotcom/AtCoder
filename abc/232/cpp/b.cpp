@@ -24,7 +24,21 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    string s, t;
+    cin >> s >> t;
+    int n = s.size();
+
+    rep(i,0,27) {
+        string ans = "";
+        rep(j,0,n) {
+            if (i+j>26) ans += char(s.at(j))
+            ans += char(s.at(j)+char(i));
+        }
+        cout << ans << "\n";
+        if (ans==t) {cout << "Yes" << "\n"; return 0;}
+    }
+
+    cout << "No" << "\n";
 
     return 0;
 }

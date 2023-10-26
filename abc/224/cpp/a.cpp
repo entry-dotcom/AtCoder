@@ -24,7 +24,11 @@ vector<int> dj = {-1,0,1,-1,1,-1,0,1}, di = {-1,-1,-1,0,0,1,1,1};
 
 int main() {
 
-    
+    string s;
+    cin >> s;
+    int n = s.size();
+
+    cout << (s.at(n-1)=='r' && s.at(n-2)=='e' ? "er":"ist") << "\n";
 
     return 0;
 }
